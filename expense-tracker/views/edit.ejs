@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Transaction</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Transaction</h1>
+
+    <form action="/edit/<%= transaction._id %>" method="POST">
+      <input type="text" name="text" value="<%= transaction.text %>" required>
+      <input type="number" name="amount" value="<%= transaction.amount %>" required>
+      <button type="submit">Update</button>
+    </form>
+    <p><a href="/">⬅ Back</a></p>
+  </div>
+</body>
+</html>

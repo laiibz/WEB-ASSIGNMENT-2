@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <div class="summary">
+      <p><strong>Balance:</strong> Rs.<%= total %></p>
+      <p><strong>Income:</strong> Rs.<%= income %></p>
+      <p><strong>Expense:</strong> Rs.<%= Math.abs(expense) %></p>
+    </div>
+
+    <!-- Add transaction form -->
+    <form action="/add" method="POST">
+      <input type="text" name="text" placeholder="Description" required>
+      <input type="number" name="amount" placeholder="Amount (use - for expense)" required>
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- Transaction list -->
+    <ul>
+      <% transactions.forEach(t => { %>
+        <li>
+          <span>
+            <%= t.text %> - Rs.<%= t.amount %>
+          </span>
+          <span>
+            <a href="/edit/<%= t._id %>">Edit</a>
+            <form action="/delete/<%= t._id %>" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </span>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>
